@@ -19,9 +19,6 @@ def get_llm_completion(prompt, system_prompt=DEFAULT_SYSTEM_PROMPT, model=GPT_35
         {"role": "system", "content": system_prompt},
         {"role": "user", "content": prompt}
     ])
-    print(prompt)
-    print(completion.choices[0].message.content)
-    print()
     return completion.choices[0].message.content
 
 

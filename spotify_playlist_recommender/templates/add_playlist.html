@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Playlist</title>
+    <!-- Add any CSS links here (e.g., Bootstrap) -->
+</head>
+<body>
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <ul class="flashes">
+                {% for message in messages %}
+                <div class="message_flash">{{ message }}</div>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}
+    <div class="container">
+        <h1>Lookup a Spotify Playlist</h1>
+        <form action="{{ url_for('main_blueprint.search_playlists') }}" method="post">
+            <div class="form-group">
+                <label for="playlistId">Playlist ID:</label>
+                <input type="text" class="form-control" id="playlistId" name="playlistId" placeholder="Enter Spotify Playlist ID" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Lookup Playlist</button>
+        </form>
+
+        {% if playlist_info %}
+            <div class="playlist-info">
+                <h2>Playlist Information</h2>
+                <p><strong>Name:</strong> {{ playlist_info.name }}</p>
+                <p><strong>Owner:</strong> {{ playlist_info.owner }}</p>
+                <p><strong>Description:</strong> {{ playlist_info.description }}</p>
+                <p><strong>Number of Tracks:</strong> {{ playlist_info.num_tracks }}</p>
+                <!-- Add more playlist details as needed -->
+                
+                <!-- Add Playlist Button -->
+                <form action="{{ url_for('main_blueprint.add_playlist') }}" method="post">
+                    <input type="hidden" name="playlistId" value="{{ playlist_info.id }}">
+                    <button type="submit" class="btn btn-success">Add Playlist</button>
+                </form>
+            </div>
+        {% endif %}
+    </div>
+</body>
+</html>

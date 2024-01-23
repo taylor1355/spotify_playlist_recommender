@@ -56,8 +56,8 @@ def main():
     spotify_api.authenticate_spotify(api_keys['SPOTIFY_CLIENT_ID'], api_keys['SPOTIFY_CLIENT_SECRET'])
     chatgpt_api.authenticate_openai(api_keys['OPENAI_API_KEY'])
 
-    source_playlist_ids = ['67TebCgdO78QYHobH1oGqf'] #input("Enter the Source Playlist IDs (comma-separated): ").split(',')
-    destination_playlist_ids = ['4NLRzU1Cf4CwsQQsJCFcPj'] #input("Enter Destination Playlist IDs (comma-separated): ").split(',')
+    source_playlist_ids = ['5PGJN4DyltbhbNmw24P1I5'] #input("Enter the Source Playlist IDs (comma-separated): ").split(',')
+    destination_playlist_ids = ['20dTyoAe59wLJist0QxeqZ', '3bwflcNR7xcEaTuvgePOmB'] #input("Enter Destination Playlist IDs (comma-separated): ").split(',')
 
     user_playlists = spotify_api.get_user_playlists('taylor1355')
     for playlist in user_playlists['items']:
